@@ -7,7 +7,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <LinearGradient
         // Background Linear Gradient
-        colors={["rgba(0,0,0,0.8)", "transparent"]}
+        colors={["rgba(0,0,0,0.5)", "transparent"]}
         style={styles.background}
       />
     </View>
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "orange",
+    backgroundColor: "white",
     marginTop: Platform.OS == "android" ? 25 : 0,
   },
   background: {
