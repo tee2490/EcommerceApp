@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 const ProductCatd = () => {
   return (
@@ -11,6 +12,9 @@ const ProductCatd = () => {
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Test</Text>
         <Text style={styles.price}>$9.99</Text>
+      </View>
+      <View style={styles.likeContainer}>
+        <AntDesign name="hearto" color={'red'} size={15} />
       </View>
     </View>
   );
@@ -40,4 +44,14 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 10,
   },
+  likeContainer: {
+    position: "absolute",
+    padding: 5,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 20,
+    right: 10,
+    top: 10,
+  },
 });
+
+//position: "absolute" แสดงผลทับกันภายในพื้นที่เดียวกันได้ <View style={styles.container}>
