@@ -7,13 +7,15 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "../components/Header";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 
 const HomeScreen = () => {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -22,23 +24,35 @@ const HomeScreen = () => {
         style={styles.background}
       />
       <Header />
-      <Text style={styles.headingText}>Match Your Style</Text>
-      <View style={styles.inputContainer}>
-        <Image
-          source={require("../assets/search.png")}
-          style={styles.searchIcon}
-        />
-        <TextInput placeholder="Search" style={styles.textInput} />
-      </View>
-
-      <Category />
 
       <FlatList
         numColumns={2}
-        data={[1, 2, 3, 4, 5]}
-        renderItem={ProductCard}
+        ListHeaderComponent={
+          <>
+            <Text style={styles.headingText}>Match Your Style</Text>
+            <View style={styles.inputContainer}>
+              <Image
+                source={require("../assets/search.png")}
+                style={styles.searchIcon}
+              />
+              <TextInput placeholder="Search" style={styles.textInput} />
+            </View>
+
+            <Category />
+          </>
+        }
+        data={[1, 2, 3, 4, 5, 6]}
+        renderItem={(item, index) => (
+          <ProductCard
+            key={index}
+            item={item}
+            isLiked={isLiked}
+            setIsLiked={setIsLiked}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 150 }}
       />
-   
     </View>
   );
 };
