@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   TextInput,
+  FlatList,
 } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -32,11 +33,12 @@ const HomeScreen = () => {
 
       <Category />
 
-      <View style={{ flexDirection: "row" }}>
-        <ProductCard />
-        <ProductCard />
-      </View>
-      
+      <FlatList
+        numColumns={2}
+        data={[1, 2, 3, 4, 5]}
+        renderItem={ProductCard}
+      />
+   
     </View>
   );
 };

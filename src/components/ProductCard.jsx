@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const ProductCatd = () => {
-  const [isLiked, setIsLiked] = useState(false);
+  const isLiked = true;
+  //const [isLiked, setIsLiked] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -15,10 +16,8 @@ const ProductCatd = () => {
         <Text style={styles.title}>Test</Text>
         <Text style={styles.price}>$9.99</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => setIsLiked(!isLiked)}
-        style={styles.likeContainer}
-      >
+      
+      <TouchableOpacity onPress={() => {}} style={styles.likeContainer}>
         {isLiked ? (
           <AntDesign name="heart" color={"red"} size={15} />
         ) : (
