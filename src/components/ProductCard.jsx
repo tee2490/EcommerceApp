@@ -2,16 +2,13 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-const ProductCatd = ({ isLiked, setIsLiked }) => {
+const ProductCatd = ({ item, isLiked, setIsLiked }) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/girl2.png")}
-        style={styles.coverImage}
-      />
+      <Image source={{ uri: item.image }} style={styles.coverImage} />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Test</Text>
-        <Text style={styles.price}>$9.99</Text>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.price}>${item.price}</Text>
       </View>
 
       <TouchableOpacity

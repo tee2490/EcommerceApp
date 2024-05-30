@@ -12,8 +12,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import Header from "../components/Header";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
+import data from "../data/data.json";
 
 const HomeScreen = () => {
+  const [products, setProducts] = useState(data.products);
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -41,8 +43,8 @@ const HomeScreen = () => {
             <Category />
           </>
         }
-        data={[1, 2, 3, 4, 5, 6]}
-        renderItem={(item, index) => (
+        data={products}
+        renderItem={({ item, index }) => (
           <ProductCard
             key={index}
             item={item}
