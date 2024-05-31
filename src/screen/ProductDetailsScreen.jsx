@@ -95,6 +95,13 @@ const ProductDetailsScreen = () => {
               );
             })}
           </View>
+
+          {/* cart button */}
+          <View>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Add to Cart</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -174,5 +181,18 @@ const styles = StyleSheet.create({
   colorCircle: {
     flex: 1,
     borderRadius: 18,
+  },
+  button: {
+    backgroundColor: "#E96E6E",
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+    marginTop: 20,
+  },
+  buttonText: {
+    fontSize: 22,
+    color: "#FFFFFF",
+    fontWeight: "700",
   },
 });
