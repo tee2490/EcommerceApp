@@ -13,10 +13,30 @@ import Header from "../components/Header";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import data from "../data/data.json";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
   const [products, setProducts] = useState(data.products);
-  const [isLiked, setIsLiked] = useState(false);
+  const navigation = useNavigation();
+ 
+  const handleProductDetails = (item) => {
+    navigation.navigate("PRODUCT_DETAILS", { item });
+  };
+
+  const toggleFavorite = (item) => {
+    const newProduct = products.map((prod) => {
+      if (prod.id === item.id) {
+        console.log("prod: ", prod);
+        return {
+          ...prod,
+          isFavorite: !prod.isFavorite,
+        };
+      }
+      return prod;
+    });
+
+    setProducts(newProduct);
+  };
 
   return (
     <View style={styles.container}>
@@ -48,8 +68,8 @@ const HomeScreen = () => {
           <ProductCard
             key={index}
             item={item}
-            isLiked={isLiked}
-            setIsLiked={setIsLiked}
+            toggleFavorite={toggleFavorite}
+            handleProductClick={handleProductDetails}
           />
         )}
         showsVerticalScrollIndicator={false}

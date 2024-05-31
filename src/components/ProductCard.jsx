@@ -2,9 +2,12 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-const ProductCatd = ({ item, isLiked, setIsLiked }) => {
+const ProductCard = ({ item, toggleFavorite, handleProductClick }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => handleProductClick(item)}
+    >
       <Image source={{ uri: item.image }} style={styles.coverImage} />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>{item.title}</Text>
@@ -12,20 +15,20 @@ const ProductCatd = ({ item, isLiked, setIsLiked }) => {
       </View>
 
       <TouchableOpacity
-        onPress={() => setIsLiked(!isLiked)}
+        onPress={() => toggleFavorite(item)}
         style={styles.likeContainer}
       >
-        {isLiked ? (
+        {item?.isFavorite ? (
           <AntDesign name="heart" color={"red"} size={15} />
         ) : (
           <AntDesign name="hearto" color={"red"} size={15} />
         )}
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-export default ProductCatd;
+export default ProductCard;
 
 const styles = StyleSheet.create({
   container: {
