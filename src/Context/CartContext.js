@@ -33,6 +33,15 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+   const deleteCartItem = async (id) => {
+    let cartItems = await AsyncStorage.getItem("cart");
+    cartItems = cartItems ? JSON.parse(cartItems) : [];
+    cartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(cartItems);
+    calculateTotalPrice(cartItems);
+    await AsyncStorage.setItem("cart", JSON.stringify(cartItems));
+  };
+
   const calculateTotalPrice = (cartItems) => {
     let totalSum = cartItems.reduce((total, item) => total + item.price, 0);
     totalSum = totalSum.toFixed(2);
@@ -42,6 +51,7 @@ export const CartProvider = ({ children }) => {
   const value = {
     cartItems,
     addToCartItem,
+    deleteCartItem,
     totalPrice,
   };
 

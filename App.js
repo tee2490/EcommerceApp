@@ -38,7 +38,7 @@ const App = () => {
             tabBarShowLabel: false,
             tabBarActiveTintColor: "red",
           }}
-          initialRouteName="CartScreen"
+          initialRouteName=""
         >
           <Tab.Screen
             name="HOME_STACK"
