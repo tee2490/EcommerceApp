@@ -7,6 +7,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ProductDetailsScreen from "./src/screen/ProductDetailsScreen";
+import CartScreen from "./src/screen/CartScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -34,6 +35,7 @@ const App = () => {
           tabBarShowLabel: false,
           tabBarActiveTintColor: "red",
         }}
+        initialRouteName="CartScreen"
       >
         <Tab.Screen
           name="HOME_STACK"
@@ -57,7 +59,7 @@ const App = () => {
         />
         <Tab.Screen
           name="CART"
-          component={HomeScreen}
+          component={CartScreen}
           options={{
             tabBarIcon: ({ size, color }) => {
               return (

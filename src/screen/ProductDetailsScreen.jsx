@@ -52,11 +52,11 @@ const ProductDetailsScreen = () => {
           <View style={styles.sizeContainer}>
             {["S", "M", "L", "XL"].map((size) => (
               <TouchableOpacity
+                key={size}
                 onPress={() => setSelectedSize(size)}
                 style={styles.sizeValueContainer}
               >
                 <Text
-                  key={size}
                   style={[
                     styles.sizeValueText,
                     selectedSize === size && styles.sizeSelected,
