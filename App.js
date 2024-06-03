@@ -10,6 +10,7 @@ import ProductDetailsScreen from "./src/screen/ProductDetailsScreen";
 import CartScreen from "./src/screen/CartScreen";
 import { CartContext, CartProvider } from "./src/Context/CartContext";
 import { StyleSheet, Text, View } from "react-native";
+import { useFonts } from "expo-font";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,17 @@ const MyHomeStack = () => {
 };
 
 const App = () => {
+  const [fontsLoaded, fontError] = useFonts({
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
+    "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
+    "Poppins-BlackItalic.ttf": require("./assets/fonts/Poppins-BlackItalic.ttf"),
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return <Text>Font loading...</Text>;
+  }
+
   return (
     <NavigationContainer>
       <CartProvider>

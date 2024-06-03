@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { fonts } from "../utils/fonts";
 
 const ProductCard = ({ item, toggleFavorite, handleProductClick }) => {
   return (
@@ -42,12 +43,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   title: {
+    fontFamily: fonts.BlackItalic,
     fontSize: 18,
-    fontWeight: "700",
     color: "#444444",
   },
   price: {
     fontSize: 18,
+    fontFamily: fonts.BlackItalic,
   },
   contentContainer: {
     padding: 10,
