@@ -84,7 +84,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    marginTop: Platform.OS == "android" ? 25 : 0,
+    // marginTop: Platform.OS == "android" ? 25 : 0,
     padding: 20,
   },
   background: {
