@@ -13,6 +13,7 @@ import { CartContext, CartProvider } from "./src/Context/CartContext";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import AccountScreen from "./src/screen/AccountScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -86,7 +87,7 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="ACCOUNT"
-        component={HomeScreen}
+        component={AccountScreen}
         options={{
           tabBarIcon: ({ size, color }) => {
             return <FontAwesome6 name={"user"} size={size} color={color} />;
