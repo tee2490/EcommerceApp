@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { TextInput, Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const schema = yup.object().shape({
@@ -25,9 +25,46 @@ const AccountScreen = () => {
     },
   });
 
+  const onPressSend = (formData) => {
+    // Perform actions with the validated form data
+  };
+
   return (
     <View>
-      <Text>AccountScreen</Text>
+      <View>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, value } }) => (
+            <TextInput
+              value={value}
+              onChangeText={onChange}
+              placeholder="Email"
+            />
+          )}
+          name="email"
+        />
+        {errors.email && <Text>{errors.email.message}</Text>}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, value } }) => (
+            <TextInput
+              value={value}
+              onChangeText={onChange}
+              placeholder="Password"
+              secureTextEntry
+            />
+          )}
+          name="password"
+        />
+        {errors.password && <Text>{errors.password.message}</Text>}
+      </View>
+      <Button title="Submit" onPress={handleSubmit(onPressSend)} />
     </View>
   );
 };
