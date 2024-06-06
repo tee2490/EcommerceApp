@@ -28,7 +28,7 @@ const AccountScreen = () => {
         <Formik
           validationSchema={schema}
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => onPressSend(values)}
         >
           {({
             handleChange,
