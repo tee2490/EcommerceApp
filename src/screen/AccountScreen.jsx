@@ -16,10 +16,19 @@ const AccountScreen = () => {
     <View>
       <View>
         <Formik
+          validationSchema={schema}
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => console.log(values)}
         >
-          {({ handleChange, handleBlur, handleSubmit, values }) => (
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            isValid,
+            touched,
+          }) => (
             <>
               <TextInput
                 name="email"
@@ -29,6 +38,8 @@ const AccountScreen = () => {
                 value={values.email}
                 keyboardType="email-address"
               />
+              {errors.email && touched.email && <Text>{errors.email}</Text>}
+
               <TextInput
                 name="password"
                 placeholder="Password"
@@ -37,7 +48,15 @@ const AccountScreen = () => {
                 value={values.password}
                 secureTextEntry
               />
-              <Button onPress={handleSubmit} title="Submit" />
+              {errors.password && touched.password && (
+                <Text>{errors.password}</Text>
+              )}
+
+              <Button
+                onPress={handleSubmit}
+                title="LOGIN"
+                disabled={!isValid}
+              />
             </>
           )}
         </Formik>
